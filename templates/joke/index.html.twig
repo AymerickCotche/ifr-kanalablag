@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des blagues{% endblock %}
+
+{% block body %}
+<div class=" flex flex-col p-5 text-center">
+    <h2 class="mb-2 font-semibold text-lg">Liste des blagues</h2>
+
+    <div class="grid gap-4 grid-cols-3 mb-4">
+    
+      {% for joke in jokes %}
+        <div class="flex flex-col border border-black rounded-md p-3 ">
+        <span class=" bg-yellow-100 mb-2">Catégorie : {{ joke.category }}</span>
+          <h3 class="font-semibold text-green text-lg mb-2">{{ joke.title  }}</h3>
+          <p class="mb-3">{{ joke.description }}</p>
+          <div>
+            <a class="border py-1 px-3 text-sm hover:bg-red-200" href="{{ path('app_joke_show', {'id': joke.id}) }}">Voir</a>
+            <a class="border py-1 px-3 text-sm hover:bg-red-200" href="{{ path('app_joke_edit', {'id': joke.id}) }}">Editer</a>
+          </div>
+        </div>
+      {% else %}
+        <div>
+          <p colspan="4">no records found</p>
+        </div>
+      {% endfor %}
+
+    </div>
+
+    <div>
+      <a
+        class="inline-block border border-black rounded-lg px-5 py-2 hover:bg-green-200"
+        href="{{ path('app_joke_new') }}"
+      >
+        Ajouter une blague
+      </a>
+    </div>
+
+  </div>
+{% endblock %}

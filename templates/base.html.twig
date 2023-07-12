@@ -4,13 +4,32 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <script src="https://cdn.tailwindcss.com"></script>
         {% block stylesheets %}
         {% endblock %}
-
+        
         {% block javascripts %}
         {% endblock %}
     </head>
     <body>
+        <header class=" gap-5 bg-black text-white py-4 text-center">
+        <h1 class="text-3xl font-bold mb-2">kanalablag</h1>
+          <nav>
+            <ul class="flex gap-2 justify-center">
+              <li>
+                <a href="/">Accueil</a>
+              </li>
+              <li>
+                <a href="/joke">Blagues</a>
+              </li>
+              <li>
+                <a href="/category">Catégories</a>
+              </li>
+            </ul>
+          </nav>
+          
+
+        </header>
         {% block body %}{% endblock %}
     </body>
 </html>

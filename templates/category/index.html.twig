@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des catégories{% endblock %}
+
+{% block body %}
+<div class=" flex flex-col p-5 text-center">
+    <h2 class="mb-2 font-semibold text-lg">Liste des catégories</h2>
+
+    <table class="table border border-silver mb-4">
+        <thead class="bg-gray-400">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr class="border border-bottom">
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td>
+                    <a href="{{ path('app_category_show', {'id': category.id}) }}">show</a>
+                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div>
+      <a
+        class="inline-block border border-black rounded-lg px-5 py-2 hover:bg-green-200"
+        href="{{ path('app_category_new') }}"
+      >
+        Create new
+      </a>
+    </div>
+      
+    </button>
+
+{% endblock %}
